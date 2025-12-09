@@ -27,21 +27,6 @@ const Hero = ({ onStartAssessment }: HeroProps) => {
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-        {/* Video Background for Grid */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[500px] h-[500px] md:w-[600px] md:h-[600px] rounded-full overflow-hidden opacity-40">
-            <video 
-              autoPlay 
-              loop 
-              muted 
-              playsInline
-              className="w-full h-full object-cover"
-            >
-              <source src="/videos/brain-animation.mp4" type="video/mp4" />
-            </video>
-          </div>
-        </div>
-
         <div className="relative grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Content */}
           <div className="space-y-8 animate-fade-in-up">
