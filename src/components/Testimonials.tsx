@@ -67,7 +67,7 @@ const Testimonials = () => {
             >
               <Quote className="w-10 h-10 text-primary/30 mb-4" />
               <p className="text-lg leading-relaxed mb-6">
-                "{testimonial.quote}"
+                {testimonial.quote}
               </p>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
