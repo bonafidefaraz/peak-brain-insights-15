@@ -10,7 +10,7 @@ const Footer = () => {
             <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
               <Brain className="w-6 h-6 text-primary" />
             </div>
-            <span className="text-lg font-semibold tracking-heading">Peak Brain Labs</span>
+            <span className="text-lg font-semibold tracking-heading">Peak Brain Tech</span>
           </div>
 
           {/* Links */}
@@ -21,7 +21,7 @@ const Footer = () => {
             <a href="#" className="hover:text-foreground transition-colors">
               Terms of Service
             </a>
-            <a href="mailto:hello@peakbrainlabs.com" className="hover:text-foreground transition-colors">
+            <a href="mailto:hello@peakbraintech.com" className="hover:text-foreground transition-colors">
               Contact
             </a>
           </div>
@@ -41,7 +41,7 @@ const Footer = () => {
               <Linkedin className="w-5 h-5" />
             </a>
             <a 
-              href="mailto:hello@peakbrainlabs.com" 
+              href="mailto:hello@peakbraintech.com" 
               className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center hover:bg-primary/20 hover:text-primary transition-colors"
             >
               <Mail className="w-5 h-5" />
@@ -50,7 +50,10 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-border/30 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Peak Brain Labs. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Peak Brain Tech. All rights reserved.</p>
+          <p className="mt-2 text-xs text-muted-foreground/70 max-w-2xl mx-auto">
+            Peak Brain Tech is a telemedicine-enabled healthcare platform. All medical consultations and prescriptions are issued by licensed medical professionals and follow applicable healthcare and telemedicine regulations.
+          </p>
         </div>
       </div>
     </footer>
