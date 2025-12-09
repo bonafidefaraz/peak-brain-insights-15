@@ -40,7 +40,7 @@ const Navbar = ({ onStartAssessment }: NavbarProps) => {
             <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
               <Brain className="w-6 h-6 text-primary" />
             </div>
-            <span className="text-lg font-semibold tracking-heading">Peak Brain Labs</span>
+            <span className="text-lg font-semibold tracking-heading">Peak Brain Tech</span>
           </a>
 
           {/* Desktop Navigation */}
@@ -59,7 +59,7 @@ const Navbar = ({ onStartAssessment }: NavbarProps) => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button onClick={onStartAssessment} className="btn-primary">
-              Take the Peak Brain Score
+              Get Started
             </Button>
           </div>
 
@@ -91,7 +91,7 @@ const Navbar = ({ onStartAssessment }: NavbarProps) => {
                 </a>
               ))}
               <Button onClick={onStartAssessment} className="btn-primary mt-2">
-                Take the Peak Brain Score
+                Get Started
               </Button>
             </div>
           </div>

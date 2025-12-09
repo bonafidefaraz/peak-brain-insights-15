@@ -32,16 +32,20 @@ const Hero = ({ onStartAssessment }: HeroProps) => {
           <div className="space-y-8 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm text-primary font-medium">Science-Backed Assessment</span>
+              <span className="text-sm text-primary font-medium">Backed by 100+ Biomarkers</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
-              Measure your{' '}
-              <span className="gradient-text">Peak Brain Score.</span>
+              Precision Brain &{' '}
+              <span className="gradient-text">Health Optimization</span>
             </h1>
 
             <p className="text-lg sm:text-xl text-muted-foreground max-w-lg leading-relaxed">
-              A science-backed snapshot of your focus, clarity, stress load, and lifestyle – in under 3 minutes.
+              We combine 100+ advanced blood biomarkers, expert medical consultations, and precision dosing to identify, treat, and track the root causes of suboptimal brain performance.
+            </p>
+            
+            <p className="text-base text-muted-foreground/80 max-w-lg">
+              This is real healthcare, delivered digitally.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -58,7 +62,7 @@ const Hero = ({ onStartAssessment }: HeroProps) => {
                 className="btn-outline text-base"
                 size="lg"
               >
-                Talk to a Peak Brain Expert
+                Speak with a Specialist
               </Button>
             </div>
 
