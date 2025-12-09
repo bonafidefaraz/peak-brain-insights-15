@@ -1,7 +1,9 @@
 import { Mail, ArrowRight, RefreshCw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import RadialGauge from './RadialGauge';
+import PeakScoreMatrix from './PeakScoreMatrix';
 import { AssessmentData } from './AssessmentForm';
+import { PeakMatrixScore, calculatePeakScore } from '@/services/peakScoreCalculator';
 
 interface ResultsViewProps {
   data: AssessmentData;
@@ -10,48 +12,44 @@ interface ResultsViewProps {
 }
 
 const ResultsView = ({ data, score, onRetake }: ResultsViewProps) => {
+  const matrixScore: PeakMatrixScore = calculatePeakScore(data);
+
   const getZone = (s: number) => {
     if (s >= 75) return { name: 'Peak Zone', description: "You're performing at a high level. Focus on maintaining these habits and making small optimizations." };
     if (s >= 50) return { name: 'Growth Zone', description: "You have solid foundations but there's room for improvement. Small changes can yield big results." };
     return { name: 'Recovery Zone', description: "Your brain is signaling that it needs support. Prioritize rest, stress reduction, and foundational habits." };
   };
 
-  const zone = getZone(score);
+  const zone = getZone(matrixScore.OverallPeakScore);
 
-  // Calculate domain scores
-  const focusClarity = Math.round(
-    ((data.mentalClarity + data.focus + (10 - data.forgetfulness)) / 30) * 100
-  );
-  const recoverySleep = Math.round(
-    ((data.sleepQuality + data.energyLevels + (10 - data.stressLoad)) / 30) * 100
-  );
-  const lifestyle = Math.round(
-    (((10 - data.screenTime) + data.physicalActivity + data.dietQuality + (10 - data.caffeineIntake) + (10 - data.alcoholIntake)) / 50) * 100
-  );
+  // Generate recommendations based on lowest scoring quadrants
+  const getRecommendations = (matrix: PeakMatrixScore) => {
+    const recommendations: string[] = [];
 
-  const domains = [
-    { name: 'Focus & Clarity', score: focusClarity, color: 'hsl(160, 83%, 35%)' },
-    { name: 'Recovery & Sleep', score: recoverySleep, color: 'hsl(180, 60%, 45%)' },
-    { name: 'Lifestyle & Habits', score: lifestyle, color: 'hsl(270, 60%, 55%)' },
-  ];
+    if (matrix.CognitiveEmotional < 60) {
+      recommendations.push('Practice 10 minutes of daily meditation to reduce mental fog and stress.');
+      recommendations.push('Take short breaks every 90 minutes during focused work.');
+    }
+    if (matrix.PhysicalAesthetic < 60) {
+      recommendations.push('Add a 20-minute walk to your daily routine for energy boost.');
+      recommendations.push('Focus on whole foods and reduce processed food intake.');
+    }
+    if (matrix.HormonalVitality < 60) {
+      recommendations.push('Prioritize 7-8 hours of quality sleep as your #1 goal.');
+      recommendations.push('Reduce caffeine after 2 PM to improve sleep quality.');
+    }
 
-  const recommendations = score >= 75 
-    ? [
-        'Continue your current sleep routine - it\'s working well.',
-        'Consider adding meditation to further enhance focus.',
-        'Share your habits with others to stay accountable.',
-      ]
-    : score >= 50
-    ? [
-        'Try reducing screen time 1 hour before bed.',
-        'Add a 20-minute walk to your daily routine.',
-        'Consider a morning focus ritual before checking email.',
-      ]
-    : [
-        'Prioritize 7-8 hours of sleep as your #1 goal.',
-        'Take short breaks every 90 minutes during work.',
-        'Reduce caffeine after 2 PM to improve sleep quality.',
-      ];
+    // If all scores are good, give maintenance tips
+    if (recommendations.length === 0) {
+      recommendations.push('Continue your current sleep routine - it\'s working well.');
+      recommendations.push('Consider adding meditation to further enhance focus.');
+      recommendations.push('Share your habits with others to stay accountable.');
+    }
+
+    return recommendations.slice(0, 3);
+  };
+
+  const recommendations = getRecommendations(matrixScore);
 
   return (
     <div className="max-w-4xl mx-auto animate-fade-in">
@@ -62,7 +60,7 @@ const ResultsView = ({ data, score, onRetake }: ResultsViewProps) => {
           <span className="text-sm text-primary font-medium">Assessment Complete</span>
         </div>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
-          Your Peak Brain Score
+          Your Peak Brain Matrix
         </h2>
       </div>
 
@@ -71,7 +69,7 @@ const ResultsView = ({ data, score, onRetake }: ResultsViewProps) => {
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Gauge */}
           <div className="flex-shrink-0">
-            <RadialGauge score={score} size={280} />
+            <RadialGauge score={matrixScore.OverallPeakScore} size={280} />
           </div>
 
           {/* Score Info */}
@@ -80,29 +78,14 @@ const ResultsView = ({ data, score, onRetake }: ResultsViewProps) => {
             <p className="text-muted-foreground leading-relaxed mb-6">
               {zone.description}
             </p>
-
-            {/* Domain Breakdown */}
-            <div className="space-y-4">
-              {domains.map((domain) => (
-                <div key={domain.name} className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="font-medium">{domain.name}</span>
-                    <span style={{ color: domain.color }}>{domain.score}%</span>
-                  </div>
-                  <div className="h-2 bg-muted rounded-full overflow-hidden">
-                    <div
-                      className="h-full rounded-full transition-all duration-1000"
-                      style={{ 
-                        width: `${domain.score}%`,
-                        backgroundColor: domain.color,
-                      }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
+      </div>
+
+      {/* Peak Score Matrix - Radar Chart */}
+      <div className="glass-card p-8 mb-8">
+        <h3 className="text-xl font-semibold mb-6 text-center">High-Performance Decay Matrix</h3>
+        <PeakScoreMatrix score={matrixScore} />
       </div>
 
       {/* Recommendations */}
