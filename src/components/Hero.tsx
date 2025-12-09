@@ -118,7 +118,7 @@ const Hero = ({ onStartAssessment }: HeroProps) => {
             <div className="absolute top-10 right-10 z-20 glass-card px-4 py-2 rounded-xl animate-float delay-200">
               <span className="text-sm font-medium">Focus: <span className="text-primary">High</span></span>
             </div>
-            <div className="absolute bottom-10 left-10 z-20 glass-card px-4 py-2 rounded-xl animate-float delay-400">
+            <div className="absolute bottom-20 left-10 z-20 glass-card px-4 py-2 rounded-xl animate-float delay-400">
               <span className="text-sm font-medium">Stress: <span className="text-peak-teal">Moderate</span></span>
             </div>
           </div>
