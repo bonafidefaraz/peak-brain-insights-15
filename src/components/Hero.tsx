@@ -70,37 +70,18 @@ const Hero = ({ onStartAssessment }: HeroProps) => {
 
           {/* Right Visual */}
           <div className="relative flex items-center justify-center animate-fade-in delay-300">
-            {/* Brain Illustration Background */}
+            {/* Brain Video Background */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-80 h-80 md:w-96 md:h-96 relative">
-                {/* Geometric Brain Pattern */}
-                <svg viewBox="0 0 400 400" className="w-full h-full opacity-20">
-                  <defs>
-                    <linearGradient id="brainGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="hsl(160, 83%, 35%)" />
-                      <stop offset="50%" stopColor="hsl(180, 60%, 45%)" />
-                      <stop offset="100%" stopColor="hsl(270, 60%, 55%)" />
-                    </linearGradient>
-                  </defs>
-                  <g fill="none" stroke="url(#brainGradient)" strokeWidth="1">
-                    <circle cx="200" cy="200" r="150" />
-                    <circle cx="200" cy="200" r="120" />
-                    <circle cx="200" cy="200" r="90" />
-                    <path d="M200 50 L200 350" />
-                    <path d="M50 200 L350 200" />
-                    <path d="M100 100 L300 300" />
-                    <path d="M300 100 L100 300" />
-                    {/* Neural network nodes */}
-                    <circle cx="200" cy="80" r="8" fill="url(#brainGradient)" />
-                    <circle cx="280" cy="120" r="6" fill="url(#brainGradient)" />
-                    <circle cx="320" cy="200" r="8" fill="url(#brainGradient)" />
-                    <circle cx="280" cy="280" r="6" fill="url(#brainGradient)" />
-                    <circle cx="200" cy="320" r="8" fill="url(#brainGradient)" />
-                    <circle cx="120" cy="280" r="6" fill="url(#brainGradient)" />
-                    <circle cx="80" cy="200" r="8" fill="url(#brainGradient)" />
-                    <circle cx="120" cy="120" r="6" fill="url(#brainGradient)" />
-                  </g>
-                </svg>
+              <div className="w-80 h-80 md:w-96 md:h-96 relative rounded-full overflow-hidden opacity-60">
+                <video 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline
+                  className="w-full h-full object-cover"
+                >
+                  <source src="/videos/brain-animation.mp4" type="video/mp4" />
+                </video>
               </div>
             </div>
 
