@@ -9,6 +9,7 @@ import FAQ from '@/components/FAQ';
 import Footer from '@/components/Footer';
 import AssessmentForm, { AssessmentData } from '@/components/AssessmentForm';
 import ResultsView from '@/components/ResultsView';
+import { calculatePeakScore } from '@/services/peakScoreCalculator';
 
 type ViewState = 'landing' | 'assessment' | 'results';
 
@@ -18,27 +19,6 @@ const Index = () => {
   const [score, setScore] = useState(0);
   const assessmentRef = useRef<HTMLDivElement>(null);
 
-  const calculateScore = (data: AssessmentData): number => {
-    // Score calculation with reversed scoring for certain metrics
-    const mentalClarity = data.mentalClarity * 10;
-    const focus = data.focus * 10;
-    const forgetfulness = (10 - data.forgetfulness) * 10;
-    const sleepQuality = data.sleepQuality * 10;
-    const energyLevels = data.energyLevels * 10;
-    const stressLoad = (10 - data.stressLoad) * 10;
-    const screenTime = (10 - data.screenTime) * 10;
-    const physicalActivity = data.physicalActivity * 10;
-    const dietQuality = data.dietQuality * 10;
-    const caffeineIntake = (10 - data.caffeineIntake) * 10;
-    const alcoholIntake = (10 - data.alcoholIntake) * 10;
-
-    const total = mentalClarity + focus + forgetfulness + sleepQuality + 
-                  energyLevels + stressLoad + screenTime + physicalActivity + 
-                  dietQuality + caffeineIntake + alcoholIntake;
-
-    return Math.round(total / 11);
-  };
-
   const handleStartAssessment = () => {
     setView('assessment');
     setTimeout(() => {
@@ -47,9 +27,9 @@ const Index = () => {
   };
 
   const handleAssessmentComplete = (data: AssessmentData) => {
-    const calculatedScore = calculateScore(data);
+    const matrixScore = calculatePeakScore(data);
     setAssessmentData(data);
-    setScore(calculatedScore);
+    setScore(matrixScore.OverallPeakScore);
     setView('results');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
