@@ -2,28 +2,46 @@ import { Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    quote: "The Peak Brain Score gave me clarity I didn't know I needed. I was running on empty and didn't even realize it.",
-    name: "Alex Chen",
-    role: "Founder & CEO",
-    avatar: "AC",
+    quote: "I wake up feeling fresh. Almost like a rebirth. For the first time in years, my mornings don't feel heavy.",
+    name: "Arjun Mehra",
+    role: "Chief of Staff",
+    avatar: "AM",
   },
   {
-    quote: "As a doctor, I appreciate the science behind this assessment. It's a great starting point for anyone serious about cognitive health.",
-    name: "Dr. Sarah Mitchell",
-    role: "Neurologist",
-    avatar: "SM",
+    quote: "I feel sharp again. Focused. It feels like a door opened back to the version of me I thought I'd lost.",
+    name: "Rohit Kulkarni",
+    role: "Senior Software Engineer (SDE II), FAANG",
+    avatar: "RK",
   },
   {
-    quote: "Three minutes to understand why I've been struggling with focus lately. The personalized recommendations actually work.",
-    name: "James Rodriguez",
-    role: "Product Manager",
-    avatar: "JR",
+    quote: "I am getting more done in less time without pushing myself. The constant mental fatigue is finally gone.",
+    name: "Ankit Jain",
+    role: "Chief Technical Manager",
+    avatar: "AJ",
   },
   {
-    quote: "I recommend Peak Brain Labs to all my executive clients. It's like a health check-up for your brain.",
-    name: "Emily Winters",
-    role: "Executive Coach",
-    avatar: "EW",
+    quote: "This did not just improve my focus. It helped me balance work, health, and everyday life.",
+    name: "Priya Nair",
+    role: "Marketing Manager, Rel Industries",
+    avatar: "PN",
+  },
+  {
+    quote: "As a quant researcher, clarity is everything. Peak Brain Tech helped me reduce noise and think cleanly again.",
+    name: "Kunal Shah",
+    role: "Quantitative Researcher",
+    avatar: "KS",
+  },
+  {
+    quote: "Mental endurance matters as much as physical readiness. This program restored my clarity, calm decision making, and focus.",
+    name: "Dr. Vikram",
+    role: "Medical Officer, Indian Army",
+    avatar: "DV",
+  },
+  {
+    quote: "What stood out was the clinical depth and seriousness. This is proper medical thinking applied to brain health.",
+    name: "Dr. Ananya",
+    role: "Associate Professor, AIIMS",
+    avatar: "DA",
   },
 ];
 
@@ -33,14 +51,14 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="section-heading mb-4">
-            Trusted by <span className="gradient-text">high performers</span>
+            Trusted by <span className="gradient-text">High Performers</span>
           </h2>
           <p className="section-subheading mx-auto">
-            See what founders, doctors, and professionals are saying
+            Real words from people who demanded more from their brain and got it
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
             <div
               key={testimonial.name}
