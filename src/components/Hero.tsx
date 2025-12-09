@@ -27,7 +27,22 @@ const Hero = ({ onStartAssessment }: HeroProps) => {
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        {/* Video Background for Grid */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="w-[500px] h-[500px] md:w-[600px] md:h-[600px] rounded-full overflow-hidden opacity-40">
+            <video 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+              className="w-full h-full object-cover"
+            >
+              <source src="/videos/brain-animation.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+
+        <div className="relative grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Left Content */}
           <div className="space-y-8 animate-fade-in-up">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20">
@@ -70,21 +85,6 @@ const Hero = ({ onStartAssessment }: HeroProps) => {
 
           {/* Right Visual */}
           <div className="relative flex items-center justify-center animate-fade-in delay-300">
-            {/* Brain Video Background */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-80 h-80 md:w-96 md:h-96 relative rounded-full overflow-hidden opacity-60">
-                <video 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/videos/brain-animation.mp4" type="video/mp4" />
-                </video>
-              </div>
-            </div>
-
             {/* Radial Gauge */}
             <div className="relative z-10 animate-float">
               <div className="glass-card p-8 rounded-3xl">
